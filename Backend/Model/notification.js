@@ -9,15 +9,24 @@ const notificationSchema= new mongoose.Schema({
         type:String,
         require:true
     },
-    Textype:{
+    type:{
         type:String,
-        enum:['transaction','delivery','chat','system'],
-        require:true
+        enum:['transaction','swap','delivery','chat','system'],
+        required:true
     },
     isRead:{
         type:Boolean,
         default:false
     },
+    relatedId:{
+        type:mongoose.Schema.Types.ObjectId,
+        refPath:'type'  
+      },
+      status:{
+        type:String,
+        enum:['unread','read'],
+        default:'unread'
+      },
     createdAt:{
         type:Date,
         default: Date.now
