@@ -58,22 +58,22 @@ exports.getAllUsers=async(req,res)=>{
         })
     }
 }
-exports.getNotification=async(req,res)=>{
-    try{
-        const user=await User.findById(req.params.id).populate('notifications')
-          res.status(200).json({
-            status:'Success',
-            data:user.notifications
-         })
+// exports.getNotification=async(req,res)=>{
+//     try{
+//         const user=await User.findById(req.params.id).populate('notifications')
+//           res.status(200).json({
+//             status:'Success',
+//             data:user.notifications
+//          })
 
-    }catch(err){
-       res.status(400).json({
-            status:'fail',
-            message:err.message
-        })
+//     }catch(err){
+//        res.status(400).json({
+//             status:'fail',
+//             message:err.message
+//         })
     
-    }
-}
+//     }
+// }
 
 exports.deleteUser=async(req,res)=>{
     try{

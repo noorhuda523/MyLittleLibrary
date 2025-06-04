@@ -1,7 +1,8 @@
 const Notification= require('./../Model/notification')
-const User=require('./../Model/userModel')
-exports.createNotification=async(userId,type,message,relatedId)=>{
+//const User=require('./../Model/userModel')
+exports.createNotification=async(req,res)=>{
    try{
+    const {userId,type,message,relatedId,status}=req.body
      const notification=await Notification.create({
         userId,
         type,
@@ -9,7 +10,13 @@ exports.createNotification=async(userId,type,message,relatedId)=>{
         relatedId,
         status:'unread'
      })
-     return notification
+             // Emit notification using Socket.IO
+        req.io.emit(`notification_${userId}`, notification);
+     res.status(200).json({
+        status:'Success',
+        data:{notification}
+
+     })
    }catch(err){
     throw new Error(err.message)
    }

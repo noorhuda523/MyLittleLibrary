@@ -23,7 +23,7 @@ exports.signUp=async(req,res)=>{
 
      })
     
-     await sendEmail({
+     await sendmail({
         to:email,
         subject:'Email Verification OTP',
         message:`Your OTP code is ${otpcode}`
@@ -58,7 +58,7 @@ exports.signUpUser= async(req,res)=>{
 
     const newUser= await User.create({name,email,password,role,emailVerified:true})
 
-    await sendEmail({
+    await sendmail({
         to:email,
         subject:'Welcome!',
         message:`${name}! , Welcome to our platform.`
