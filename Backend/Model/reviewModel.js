@@ -2,7 +2,7 @@ const mongoose=require('mongoose');
 const reviewSchema=new mongoose.Schema({
     userID:{
     type:mongoose.Schema.Types.ObjectId,
-    ref:'user',
+    ref:'User',
     required:true
    },
    bookID:{
@@ -12,7 +12,7 @@ const reviewSchema=new mongoose.Schema({
    },
    ownerID:{
    type:mongoose.Schema.Types.ObjectId,
-    ref:'user',
+    ref:'User',
     required:true
    },
    reviews:{
@@ -22,9 +22,6 @@ const reviewSchema=new mongoose.Schema({
    rating:{
     type:Number
    },
-   createAt:{
-    type:Date
-   }
-})
-const review=mongoose.model('review',reviewSchema);
-module.exports=review;
+},{timestamps:true})
+const Review=mongoose.model('Review',reviewSchema);
+module.exports=Review;

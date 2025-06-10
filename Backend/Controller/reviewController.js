@@ -1,8 +1,19 @@
 const Review = require('./../Model/reviewModel')
-exports.leftReview=async(req,res)=>{
+const Transaction = require('../Model/transactionModel');
+exports.postReview=async(req,res)=>{
     try{
-        const {buyerID}=req.body
-        const transaction=await transaction.findOne({buyerID,userID:req.user._id,status:'Confirmed'})
+        const {ownerID,bookID}=req.body
+        const transaction=await Transaction.findOne({
+            bookID,
+            status:'confirmed',
+            $or:[
+                {buyerID:req.user._id, sellerID: ownerID},
+                {renterID:req.user._id, sellerID: ownerID},
+                {swapperA:req.user._id, swapperB: ownerID},
+                {swapperB:req.user._id, swapperA: ownerID}
+            ]
+
+        })
         if(!transaction){
             return res.status(400).json({
                 message:'You cannot left review without transaction'
@@ -23,14 +34,15 @@ exports.leftReview=async(req,res)=>{
         })
     }
 }
-exports.getAllReviews=async(req,res)=>{
+exports.getUserReviews=async(req,res)=>{
     try{
-        const review=await Review.find().populate('userID','name').populate('bookID','name')
+        const ownerID=req.params.id
+        const reviews=await Review.find({ownerID}).populate('userID','name').populate('ownerID','name').populate('bookID','title')
         res.status(200).json({
             status:'success',
-            results:review.length,
+             results:reviews.length,
             data:{
-                review
+                reviews
             }
         })
     }catch(err){
@@ -40,15 +52,29 @@ exports.getAllReviews=async(req,res)=>{
         })
     }
 }
-exports.getUserReviews=async(req,res)=>{
+exports.updateReviews=async(req,res)=>{
     try{
-        const UserID=req.params._id
-        const review=await Review.find({UserID}).populate('userID','name').populate('bookID','name')
+    const review = await Review.findById(req.params.id);
+    if (!review) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'Review not found'
+      });
+    }
+    if (review.userID.toString() !== req.user.id) {
+      return res.status(403).json({
+        status: 'fail',
+        message: 'You are not allowed to update this review.'
+      });
+    }
+
+        const updateReview= await Review.findByIdAndUpdate(req.params.id,req.body,{new:true})
         res.status(200).json({
             status:'success',
             data:{
-                review
+                updateReview
             }
+
         })
     }catch(err){
         res.status(400).json({
@@ -59,8 +85,21 @@ exports.getUserReviews=async(req,res)=>{
 }
 exports.deleteReview=async(req,res)=>{
     try{
-        const review=await Review.findByIdAndDelete(req.params.id)
-        res.status(204).json({
+        const review = await Review.findById(req.params.id);
+    if (!review) {
+      return res.status(404).json({
+        status: 'fail',
+        message: 'Review not found'
+      });
+    }
+    if (review.userID.toString() !== req.user.id) {
+      return res.status(403).json({
+        status: 'fail',
+        message: 'You are not allowed to delete this review.'
+      });
+    }
+        const deleteReview=await Review.findByIdAndDelete(req.params.id)
+        res.status(200).json({
             status:'success',
             message:'Review deleted',
             data:null

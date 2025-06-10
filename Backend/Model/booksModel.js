@@ -21,6 +21,11 @@ const bookSchema=new mongoose.Schema({
     ref: 'user',
     required: true
     },
+    category:{
+    type:String,
+    required:true,
+    enum:['fiction','Non-fiction','science','biography','history','other']
+    },
     status:{
         type:String,
         enum:['available','sold','rented','swapped'],
@@ -28,10 +33,10 @@ const bookSchema=new mongoose.Schema({
         
     },
     availableFor:{
-         type:String,
-         required:true,
-         enum:['sell','Rent','swap'],
-        default:'swap'
+        type:String,
+        required:true,
+        enum:['sale','rent','swap'],
+        default:'sale'
      },
      requestId:{
         type:String,
