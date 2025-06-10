@@ -1,6 +1,6 @@
 const express=require('express')
 const controller=require('./../Controller/reviewController')
-const authController=require('./../controller/authController')
+const authController=require('./../Controller/authController')
 const router=express.Router();
 router.post('/postReview',authController.protect,authController.restrictTo('buyer'),controller.postReview);
 router.get('/getUserReviews/:id',controller.getUserReviews);

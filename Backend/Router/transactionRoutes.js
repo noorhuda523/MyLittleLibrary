@@ -1,6 +1,6 @@
 const express=require('express')
 const controller=require('./../Controller/transactionController')
-const authController=require('./../controller/authController')
+const authController=require('./../Controller/authController')
 const router=express.Router();
 router.post('/createTransaction',authController.protect,controller.createTransaction);
 router.patch('/updateTransactionStatus/:id',authController.protect,controller.updateTransactionStatus);

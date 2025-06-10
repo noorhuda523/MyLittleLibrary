@@ -5,6 +5,6 @@ const Uroute=express.Router()
 
 Uroute.patch('/updateUser',auCont.protect,uCont.upadateUser)
 Uroute.get('/getUser',uCont.getUser)
-Uroute.get('/getAllUser',auCont.protect,auCont.restrictTo('admin'),uCont.getAllUsers)
-Uroute.delete('/deleteUser',auCont.protect,auCont.restrictTo('admin'),uCont.deleteUser)
+Uroute.get('/getAllUser',auCont.protect,uCont.getAllUsers)
+Uroute.delete('/deleteUser',auCont.protect,uCont.deleteUser)
 module.exports=Uroute

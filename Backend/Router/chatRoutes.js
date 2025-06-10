@@ -1,6 +1,6 @@
 const express=require('express')
 const controller=require('./../Controller/chatController')
-const authController=require('./../controller/authController')
+const authController=require('./../Controller/authController')
 const router=express.Router();
 router.post('/createChat',authController.protect,controller.createChat);
 router.post('/sendMessage',authController.protect,controller.sendMessage);

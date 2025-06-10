@@ -8,6 +8,7 @@ router.delete('/deleteBook/:id',controller.deleteBook);
 router.get('/getBooksByType/:type',controller.getBooksByType);
 router.get('/searchBook',controller.searchBook);
 router.get('/getBooksByCategory/:category',controller.getBooksByCategory);
+router.get('/getAllBooks',controller.getAllBooks);
 module.exports=router;
 
 
