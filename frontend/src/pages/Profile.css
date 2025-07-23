@@ -1,0 +1,222 @@
+.profile-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f8f0f5; /* Light pinkish background to match app theme */
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.profile-card {
+  background-color: white;
+  border-radius: 18px;
+  box-shadow: 0 4px 24px rgba(169, 127, 214, 0.15);
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  position: relative;
+  margin-top: 80px; /* Space for the overlapping profile image */
+  margin-bottom: 20px;
+}
+
+.profile-image-container {
+  position: absolute;
+  top: -75px; /* Adjust to overlap the card */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.profile-image-container:hover .profile-image-overlay {
+  opacity: 1;
+}
+
+.profile-image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.camera-icon {
+  color: white;
+  font-size: 30px;
+}
+
+.profile-image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-actions {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  top: 20px;
+  left: 0;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.profile-action-button {
+  background: none;
+  border: none;
+  color: #742a83;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 12px;
+  border-radius: 15px;
+  transition: background-color 0.2s;
+}
+
+.profile-action-button.message-button-moved {
+  display: block;
+  margin: 15px auto;
+  width: fit-content; /* Adjust based on content */
+  padding: 8px 25px; /* Reduced horizontal padding */
+  max-width: 150px; /* Set a maximum width */
+  box-shadow: 0 2px 8px rgba(154, 71, 165, 0.2); /* Added shadow */
+  border: 1px solid #742a83; /* Add a subtle border */
+}
+
+.profile-action-button.message-button-moved:hover {
+  background: linear-gradient(90deg, #673899 60%, #9a47a5 100%);
+  color: #fff; /* Text color becomes white */
+  box-shadow: 0 4px 12px rgba(154, 71, 165, 0.3); /* Enhanced shadow on hover */
+  border-color: transparent; /* Remove border on hover */
+}
+
+.profile-action-button:hover {
+  background-color: #f0e0f5;
+}
+
+.profile-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #2d1a35;
+  margin-top: 80px; /* Space below the profile image */
+  margin-bottom: 5px;
+}
+
+.profile-location {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 20px;
+}
+
+.profile-bio {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #49034e;
+}
+
+.stat-label {
+  font-size: 0.85rem;
+  color: #777;
+}
+
+.show-more-button {
+  background: linear-gradient(90deg, #ed4264 0%, #ffedbc 100%);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 12px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(237, 66, 100, 0.2);
+}
+
+.show-more-button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(237, 66, 100, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .profile-card {
+    margin-top: 100px;
+    padding: 30px 20px;
+  }
+
+  .profile-image-container {
+    width: 120px;
+    height: 120px;
+    top: -60px;
+  }
+
+  .profile-name {
+    font-size: 1.6rem;
+    margin-top: 70px;
+  }
+
+  .profile-actions {
+    padding: 0 10px;
+  }
+
+  .profile-action-button {
+    font-size: 0.8rem;
+    padding: 6px 10px;
+  }
+
+  .profile-bio {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+
+  .stat-value {
+    font-size: 1.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.8rem;
+  }
+
+  .show-more-button {
+    padding: 10px 25px;
+    font-size: 0.9rem;
+  }
+} 

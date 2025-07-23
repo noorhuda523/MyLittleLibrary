@@ -1,0 +1,48 @@
+.booklist-container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.category-block {
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 18px rgba(169,127,214,0.10), 0 1.5px 4px rgba(169,127,214,0.10);
+  margin-bottom: 1.2rem;
+  min-height: 220px;
+  padding: 1.5rem 1.5rem 1.2rem 1.5rem;
+  width: 100%;
+}
+
+.category-title {
+  color: #673899;
+  margin: 0 0 1.2rem 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.category-books-row {
+  display: flex;
+  flex-direction: row;
+  gap: 1.2rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: thin;
+  scrollbar-color: #e4d1e9 #fff;
+}
+
+.category-books-row::-webkit-scrollbar {
+  height: 8px;
+}
+.category-books-row::-webkit-scrollbar-thumb {
+  background: #e4d1e9;
+  border-radius: 8px;
+}
+
+.no-books {
+  color: #aaa;
+  font-size: 1.1rem;
+  padding: 1rem 0;
+} 

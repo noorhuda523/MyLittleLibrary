@@ -1,0 +1,32 @@
+/* Global styles */
+body {
+  margin: 0;
+  font-family: 'Times New Roman', Times, serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #F9F9F9;
+  color: #333;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.search-bar:focus {
+  box-shadow: 0 0 0 2px #FFD166;
+}
+
+/* Ensure all headings also use Times New Roman */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+/* Ensure buttons and inputs inherit the font */
+button, input, textarea, select {
+  font-family: inherit;
+} 
