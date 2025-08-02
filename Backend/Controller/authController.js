@@ -79,7 +79,7 @@ exports.signUpUser= async(req,res)=>{
 
 
 const userToken=(userid)=>{
-    return jwt.sign({id:userid},'my-personal-key-access-083',{expiresIn:'9h'})
+    return jwt.sign({id:userid},'my-personal-key-access-083',{expiresIn:'30d'})
 }
 exports.Login = async(req,res)=>{
     try {
