@@ -1,0 +1,44 @@
+const mongoose=require('mongoose');
+const transactionSchema=new mongoose.Schema({
+    bookID:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'Book',
+    required:true
+   },
+    transactionType:{
+    type:String,
+    enum:['sale','swap','rent'],
+    required:true
+   },
+   buyerID:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'User',
+   },
+   renterID:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'User',
+   },
+   swapperA:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'User',
+   },
+   swapperB:{
+    type:mongoose.Schema.Types.ObjectId,
+    ref:'User',
+   },
+   sellerID:{
+   type:mongoose.Schema.Types.ObjectId,
+    ref:'User',
+   },
+   status:{
+    type:String,
+    enum:['pending','cancelled','confirmed'],
+    default:'pending'
+   },
+   transactionDate:{
+    type:Date,
+    default:Date.now
+   },
+},{timestamps:true})
+const Transaction=mongoose.model('Transaction',transactionSchema);
+module.exports=Transaction;

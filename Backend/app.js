@@ -27,6 +27,8 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 
+// Error handling middleware for file uploads
+app.use(handleMulterError);
 
 // Create server instance for Socket.IO
 const server = http.createServer(app);
@@ -90,8 +92,9 @@ app.use('/api/payment',paymentRoutes);
 app.use('/api/library',libraryRoutes);
 app.use('/api/notification',notificationRoutes);
 app.use('/api/upload', uploadRoutes);
-app.use(handleMulterError);
 
-server.listen(process.env.PORT, () => {
-    console.log(`Server connected to port ${process.env.PORT}`);
-});
+
+app.listen(process.env.PORT,()=>{
+    console.log(`server connected to port`);
+    
+})
