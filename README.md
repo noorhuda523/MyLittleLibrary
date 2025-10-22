@@ -1,4 +1,4 @@
-
+Final Description – My Little Library (Backend)
 My Little Library is a community-driven Book Sharing Platform built with a complete Node.js + Express backend and MongoDB integration.
 The platform enables users to borrow, rent, purchase, and share books within their local area.
 
